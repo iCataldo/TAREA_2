@@ -1,4 +1,14 @@
 class Expendedor {
+    public enum PRODUCTOS {
+        PreCoca(800),
+        PreSprite(700),
+        PreSniker(500),
+        PreSuper8(300);
+        private final int precio;
+        PRODUCTOS(int precio){
+            this.precio=precio;
+        }
+    }
     public static final int COCA = 1;
     public static final int SPRITE = 2;
     public static final int SNICKERS = 3;
@@ -8,10 +18,8 @@ class Expendedor {
     private Deposito snicker;
     private Deposito supe8;
     private DepositoM monVu;
-    private int precio;
 
-    public Expendedor(int n, int precio) {
-        this.precio = precio;
+    public Expendedor(int n) {
         monVu = new DepositoM();
         coca = new Deposito();
         sprite = new Deposito();
@@ -34,60 +42,59 @@ class Expendedor {
 
     public Producto comprarBebida(Moneda moneda, int tipo) {
         int cobro = 0;
+        int precio;
         if (moneda == null) {
             return null;
         }
-        if (precio <= moneda.getValor()) {
-            if (1 == tipo) {
-                Producto beb = coca.getProducto();
-                if (beb != null) {
+        Producto pro=null;
+        if (1 == tipo) {
+            precio = PRODUCTOS.PreCoca.precio;
+            if (moneda.getValor() >= precio){
+                pro = coca.getProducto();
+                if (pro != null) {
                     cobro = precio;
-                }
-                int vuelto = moneda.getValor() - cobro;
-                for (int i = 0; i < vuelto; i = i + 100) {
-                    monVu.addMoneda();
-                }
-                return beb;
             }
-            if (2 == tipo) {
-                Producto beb = sprite.getProducto();
-                if (beb != null) {
+          }
+        }
+        if (2 == tipo) {
+            precio=PRODUCTOS.PreSprite.precio;
+            if (moneda.getValor() >= precio) {
+                pro = sprite.getProducto();
+                if (pro != null) {
                     cobro = precio;
+                } else {
+                    pro = null;
                 }
-                int vuelto = moneda.getValor() - cobro;
-                for (int i = 0; i < vuelto; i = i + 100) {
-                    monVu.addMoneda();
-                }
-                return beb;
             }
-            if (3 == tipo) {
-                Producto dulce = snicker.getProducto();
-                if (dulce != null) {
+        }
+        if (3 == tipo) {
+            precio=PRODUCTOS.PreSniker.precio;
+            if (moneda.getValor() >= precio) {
+                pro = snicker.getProducto();
+                if (pro != null) {
                     cobro = precio;
+                } else {
+                    pro = null;
                 }
-                int vuelto = moneda.getValor() - cobro;
-                for (int i = 0; i < vuelto; i = i + 100) {
-                    monVu.addMoneda();
-                }
-                return dulce;
             }
-            if (4 == tipo) {
-                Producto dulce = supe8.getProducto();
-                if (dulce != null) {
+        }
+        if (4 == tipo) {
+            precio=PRODUCTOS.PreSuper8.precio;
+            if (moneda.getValor() >= precio) {
+                pro = supe8.getProducto();
+                if (pro != null) {
                     cobro = precio;
+                } else {
+                    pro = null;
                 }
-                int vuelto = moneda.getValor() - cobro;
-                for (int i = 0; i < vuelto; i = i + 100) {
-                    monVu.addMoneda();
-                }
-                return dulce;
             }
         }
         int vuelto = moneda.getValor() - cobro;
         for (int i = 0; i < vuelto; i = i + 100) {
             monVu.addMoneda();
         }
-        return null;
+        return pro;
+
     }
 
     public Moneda getVuelto() {
