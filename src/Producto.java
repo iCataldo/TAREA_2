@@ -11,6 +11,7 @@ abstract class Producto{
 
     public abstract String beber();
 }
+//Los tipos de Productos se dibiden entre los que son Bebidas y los Dulces
 abstract class Bebida extends Producto{
 
     public Bebida(int n) {
@@ -22,6 +23,7 @@ abstract class Dulce extends Producto{
         super(n);
     }
 }
+//los tipos de Dulce se dividen entre Super8 y Snicker
 class Snickers extends Dulce{
 
     public Snickers(int n) {
@@ -41,6 +43,7 @@ class Super8 extends Dulce{
     }
 }
 
+//los tipos de Bebida se dividen entre Coca y Sprite
 class CocaCola extends Bebida{
 
     public CocaCola(int n) {
