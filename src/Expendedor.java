@@ -1,5 +1,4 @@
 class Expendedor {
-    // Se
     public enum PRODUCTOS {
         //Cada Producto obtine su precio
         PreCoca(800),
