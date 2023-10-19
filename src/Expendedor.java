@@ -1,4 +1,5 @@
 class Expendedor {
+    // Se
     public enum PRODUCTOS {
         //Cada Producto obtine su precio
         PreCoca(800),
@@ -45,52 +46,62 @@ class Expendedor {
 
     }
     //Metodo para comprar bebidas
-    public Producto comprarBebida(Moneda moneda, int tipo) {
-        //Se guardda el valor que le combra por producto
-        int cobro = 0;
+    public Producto comprarBebida(Moneda moneda, int tipo)
+    throws NoHayProductoException,PagoIncorrectoException,PagoInsuficienteException{
+        //Se guardda el valor del vuelto y el producto
+        int vuelto = 0;
         Producto pro=null;
         // la moneda no existe no regresa nada
         if (moneda == null) {
-            return null;
+            throw new PagoIncorrectoException("No Se Ingreso Ninguna Moneda");
         }
         /*
         Si el Producto pedido existe la maquina lo entrega y cobra el pedido
         En caso de que no entrege nada no cobra nada
          */
-        if (1 == tipo) {
-            if (moneda.getValor() >= PRODUCTOS.PreCoca.precio){
+
+        if (1==tipo) {
+            vuelto = moneda.getValor() - PRODUCTOS.PreCoca.precio;
+            if (0<=vuelto){
                 pro = coca.getProducto();
-                if (pro != null) {
-                    cobro = PRODUCTOS.PreCoca.precio;
+                if (pro == null)  {
+                    throw new NoHayProductoException("Se Agoto La CocaCola");
                 }
+            }
+            else {
+                throw new PagoInsuficienteException("Faltan: "+-vuelto+"$");
             }
         }
         /*
         Si el Producto pedido existe la maquina lo entrega y cobra el pedido
         En caso de que no entrege nada no cobra nada
          */
-        if (2 == tipo) {
-            if (moneda.getValor() >= PRODUCTOS.PreSprite.precio) {
+        if (2==tipo) {
+            vuelto = moneda.getValor() - PRODUCTOS.PreSprite.precio;
+            if (0<=vuelto) {
                 pro = sprite.getProducto();
-                if (pro != null) {
-                    cobro = PRODUCTOS.PreSprite.precio;
-                } else {
-                    pro = null;
+                if (pro == null){
+                    throw new NoHayProductoException("Se Agoto La Sprite");
                 }
+            }
+            else {
+                throw new PagoInsuficienteException("Faltan: "+-vuelto+"$");
             }
         }
         /*
         Si el Producto pedido existe la maquina lo entrega y cobra el pedido
         En caso de que no entrege nada no cobra nada
          */
-        if (3 == tipo) {
-            if (moneda.getValor() >= PRODUCTOS.PreSniker.precio) {
+        if (3==tipo) {
+            vuelto = moneda.getValor() - PRODUCTOS.PreSniker.precio;
+            if (0<=vuelto) {
                 pro = snicker.getProducto();
-                if (pro != null) {
-                    cobro = PRODUCTOS.PreSniker.precio;
-                } else {
-                    pro = null;
+                if (pro == null){
+                    throw new NoHayProductoException("Se Agoto Los Snickers");
                 }
+            }
+            else {
+                throw new PagoInsuficienteException("Faltan: "+-vuelto+"$");
             }
         }
         /*
@@ -98,26 +109,29 @@ class Expendedor {
         En caso de que no entrege nada no cobra nada
          */
         if (4 == tipo) {
-            if (moneda.getValor() >= PRODUCTOS.PreSuper8.precio) {
+            vuelto = moneda.getValor() - PRODUCTOS.PreSuper8.precio;
+            if (0<=vuelto) {
                 pro = supe8.getProducto();
-                if (pro != null) {
-                    cobro = PRODUCTOS.PreSuper8.precio;
-                } else {
-                    pro = null;
+                if (pro == null){
+                    throw new NoHayProductoException("Se Agoto Los Super8");
                 }
+            }
+            else {
+                throw new PagoInsuficienteException("Faltan: "+-vuelto+"$");
             }
         }
         //Se calcula el vuelto con el valor de la moneda y el cobro
-        int vuelto = moneda.getValor() - cobro;
+        if (!(0<tipo&&tipo<5)){
+            throw new NoHayProductoException("No Existe Tal Producto");
+        }
         for (int i = 0; i < vuelto; i = i + 100) {
             monVu.addMoneda();
         }
         return pro;
-
     }
+
     //El vuelto se obtiene sacando de a una Moneda
     public Moneda getVuelto() {
         return monVu.getMoneda();
     }
-
 }
