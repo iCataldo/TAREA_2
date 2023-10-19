@@ -5,7 +5,8 @@ class Comprador {
     private String sonido= "null";
     private int vuelto = 0;
 
-    public Comprador(Moneda m, int cual, Expendedor exp) {
+    public Comprador(Moneda m, int cual, Expendedor exp) 
+    throws NoHayProductoException,PagoIncorrectoException,PagoInsuficienteException{
 
         Producto bebida = exp.comprarBebida(m, cual);
         //verifica si hay una bebida que comprar
