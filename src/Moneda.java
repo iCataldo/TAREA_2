@@ -6,6 +6,7 @@ abstract class Moneda{
     }
     public abstract int getValor();
 }
+//Se crea un tipo de Moneda que devuelva un valor de 100
 class Moneda100 extends Moneda {
     public Moneda100() {
         super();
@@ -15,6 +16,7 @@ class Moneda100 extends Moneda {
         return 100;
     }
 }
+//Se crea un tipo de Moneda que devuelva un valor de 500
 class Moneda500 extends Moneda{
     public Moneda500(){
         super();
@@ -23,6 +25,7 @@ class Moneda500 extends Moneda{
         return 500;
     }
 }
+//Se crea un tipo de Moneda que devuelva un valor de 1000
 class Moneda1000 extends Moneda{
     public Moneda1000(){
         super();
@@ -31,6 +34,7 @@ class Moneda1000 extends Moneda{
         return 1000;
     }
 }
+//Se crea un tipo de Moneda que devuelva un valor de 1500
 class Moneda1500 extends Moneda{
     public Moneda1500(){
         super();
