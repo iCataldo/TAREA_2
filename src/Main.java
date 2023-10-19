@@ -1,5 +1,6 @@
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    throws NoHayProductoException,PagoIncorrectoException,PagoInsuficienteException{
         Expendedor exp = new Expendedor(3);
         Moneda m = null;
         Comprador c=null;
