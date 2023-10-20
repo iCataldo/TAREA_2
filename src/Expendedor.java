@@ -21,7 +21,6 @@ class Expendedor {
     private Deposito snicker;
     private Deposito supe8;
     private DepositoM monVu;
-
     public Expendedor(int n) {
 
         monVu = new DepositoM();
@@ -44,7 +43,8 @@ class Expendedor {
         }
 
     }
-    //Metodo para comprar bebidas
+    //Metodo para comprar produco al ingresar una moneda y selecionar una con su numero
+    //@return Prodducto
    public Producto comprarBebida(Moneda moneda, int tipo)
     throws NoHayProductoException,PagoIncorrectoException,PagoInsuficienteException{
         //Se guardda el valor del vuelto y el producto
@@ -119,7 +119,7 @@ class Expendedor {
                 throw new PagoInsuficienteException("Faltan: "+-vuelto+"$");
             }
         }
-        //Se calcula el vuelto con el valor de la moneda y el cobro
+        //Se coloca el vuelto en el depositoM como moneda
         if (!(0<tipo&&tipo<5)){
             throw new NoHayProductoException("No Existe Tal Producto");
         }
@@ -129,7 +129,8 @@ class Expendedor {
         return pro;
     }
 
-    //El vuelto se obtiene sacando de a una Moneda
+    //Se saca de a una Moneda del vuelto
+    //@return Moneda100 
     public Moneda getVuelto() {
         return monVu.getMoneda();
     }
