@@ -26,6 +26,7 @@ class MonedaTest {
     
     @org.junit.jupiter.api.Test
     void getValor() {
+        System.out.println("=====TEST getValor() EXECUTED=====");
         assertAll(()->assertEquals(500,new Moneda500().getValor()),
                 ()-> assertEquals(100,new Moneda100().getValor()),
                 ()-> assertEquals(1000, new Moneda1000().getValor()),
