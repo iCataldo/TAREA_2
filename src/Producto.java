@@ -1,10 +1,10 @@
 abstract class Producto{
     private int serie;
-
+    // cada produco tiene un numero de serie
     public Producto(int n) {
         serie = n;
     }
-    //@return el 
+    //@return el numero de serie 
     public int getSerie() {
         return serie;
     }
@@ -28,7 +28,8 @@ class Snickers extends Dulce{
 
     public Snickers(int n) {
         super(n);
-    }
+    }    
+    //@return "super8"
     public String beber(){
         return "snickers";
     }
@@ -38,6 +39,7 @@ class Super8 extends Dulce{
     public Super8(int n) {
         super(n);
     }
+    //@return "super8"
     public String beber(){
         return "super8";
     }
@@ -49,6 +51,8 @@ class CocaCola extends Bebida{
     public CocaCola(int n) {
         super(n);
     }
+    
+    //@return "cocacola"
     public String beber(){
         return "cocacola";
     }
@@ -57,6 +61,8 @@ class Sprite extends Bebida{
     public Sprite(int n) {
         super(n);
     }
+    
+    //@return "sprite"
     public String beber(){
         return "sprite";
     }
