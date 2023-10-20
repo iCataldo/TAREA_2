@@ -12,6 +12,7 @@ class Deposito {
         var.add(producto);
     }
     //metodo para obtenera la informacio del primer Productos y sacarlo de arreglo
+    //@return Producto en la primera posicion 
     public Producto getProducto() {
         if (var.size() == 0) {
             return null;
