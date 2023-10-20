@@ -8,13 +8,13 @@ class DepositoM {
     public DepositoM() {
         ver = new ArrayList();
     }
-
     //metodo para agregar  Moneda al arreglo
     public void addMoneda() {
         Moneda mon = new Moneda100();
         ver.add(mon);
     }
     //metodo para obtenera la informacio del primera Monedas y sacarlo de arreglo
+    //@return Producto en la primera posicion
     public Moneda getMoneda() {
         if (ver.size() == 0) {
             return null;
