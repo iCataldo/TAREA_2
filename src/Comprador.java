@@ -26,9 +26,8 @@ class Comprador {
         //retorna cuanto vuelto obtuviste
         return vuelto;
     }
-
+    //@return el Nombre del producto
     public String queBebiste() {
-        //retorna el Nombre del producto
         return sonido;
     }
 }
