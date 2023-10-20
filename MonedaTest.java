@@ -3,15 +3,27 @@ import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MonedaTest {
-
+    
+@org.junit.jupiter.api.BeforeAll
+    static void setUp(){
+        System.out.println("@BeforeAll executed");
+    }
+    
     @org.junit.jupiter.api.BeforeEach
-    void setUp() {
+    void setUpThis() {
+        System.out.println("@BeforeEach executed");
     }
-
+    
     @org.junit.jupiter.api.AfterEach
-    void tearDown() {
+    void tearDownThis() {
+        System.out.println("@AfterEach executed");
     }
-
+    
+    @org.junit.jupiter.api.AfterAll
+    static void tearDown(){
+        System.out.println("@AfterAll executed");
+    }
+    
     @org.junit.jupiter.api.Test
     void getValor() {
         assertAll(()->assertEquals(500,new Moneda500().getValor()),
