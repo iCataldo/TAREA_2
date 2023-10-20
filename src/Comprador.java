@@ -21,7 +21,7 @@ class Comprador {
             }
         }
     }
-
+    //@return cuanto dinero te devuelve despues de la compra
     public int cuantoVuelto() {
         //retorna cuanto vuelto obtuviste
         return vuelto;
