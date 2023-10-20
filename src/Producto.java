@@ -4,11 +4,11 @@ abstract class Producto{
     public Producto(int n) {
         serie = n;
     }
-
+    //@return el 
     public int getSerie() {
         return serie;
     }
-
+    //@return el Nombre del Producto 
     public abstract String beber();
 }
 //Los tipos de Productos se dibiden entre los que son Bebidas y los Dulces
